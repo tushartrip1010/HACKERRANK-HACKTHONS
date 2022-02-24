@@ -1,0 +1,11 @@
+def countSort(arr):
+    arr_len = len(arr)
+    sorted_arr = [[] for i in range(100)]
+    for i in range(arr_len):
+        # replace first half of arr with '-'
+        if i<arr_len//2:
+            arr[i][1] = '-'
+        sorted_arr[int(arr[i][0])].append(arr[i][1])
+    for item in sorted_arr:
+        if item:
+            print(*item, end=' ')
