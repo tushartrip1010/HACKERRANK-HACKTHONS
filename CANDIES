@@ -1,0 +1,10 @@
+def candies(n, arr):
+    # Write your code here
+    c=[1]*n
+    for i in range(n-1):
+        if arr[i+1]>arr[i]:
+            c[i+1]=c[i]+1
+    for i in range(n-1,0,-1):
+        if arr[i-1]>arr[i] and c[i-1]<=c[i]:
+            c[i-1]=c[i]+1
+    return sum(c)
