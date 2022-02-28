@@ -1,0 +1,27 @@
+def organizingContainers(container):
+    capacity = []
+    countBalls = []
+    ball = 0
+    r = len(container)
+    c = len(container[0])
+    for i in range(r):
+        cap = 0
+        for j in range(c):
+            cap+=container[i][j]
+        capacity.append(cap)
+    
+    for i in range(c):
+        ball=0
+        for j in range(r):
+            ball+=container[j][i]
+        countBalls.append(ball)
+    
+    for i in range(r):
+        findMaxBall = max(countBalls)
+        findMaxCapacity = max(capacity)
+        if(findMaxBall<=findMaxCapacity):
+            capacity.remove(findMaxCapacity)
+            countBalls.remove(findMaxBall)
+        else:
+            return 'Impossible'
+    return 'Possible'
