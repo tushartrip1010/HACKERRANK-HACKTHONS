@@ -1,0 +1,6 @@
+def getMinimumCost(n, k, c):
+    cost = 0
+    c = sorted(c, reverse=True)
+    for i in range(0, n):
+        cost += (i // k + 1) * c[i]
+    return cost
