@@ -1,0 +1,89 @@
+def BFS(self,start,end):
+    
+    visited = {}
+    result = []
+    moves = 0
+    node_count = 0
+    queue = [start]
+    prev = {}
+
+    for i in List(n): #return list
+        visited[str(i)] = False
+
+    while(len(queue)!=0):
+        node_count = len(queue)
+        moves += 1
+        flag = False
+        while node_count>0:
+            vertex = queue.pop(0)
+            node_count -= 1
+            if visited[str(vertex)]==True:
+                continue
+            visited[str(vertex)] = True
+            for neighbour in adjList(vertex):
+                # print("visiting- ",neighbour)
+                if (visited[str(neighbour)] == False):
+                    queue.append(neighbour)
+                    if str(neighbour) not in prev:
+                        prev[str(neighbour)] = [direction.pop(0),vertex]
+                    else:
+                        direction.pop(0)
+                    if neighbour==end:
+                        flag = True
+                        break
+            # print("q", queue)
+                else:
+                    direction.pop(0)
+            if flag==True:
+                break
+        
+        if flag==True:
+            break
+        
+    if flag==False: 
+        print("Impossible")
+    else:
+        print(moves)
+        while True:
+            result.append(prev[str(end)][0])
+            end = prev[str(end)][1]
+            if end==start:
+                break
+        result.reverse()
+        print(" ".join(result))
+
+def List(n):
+    l = []
+    for i in range(n):
+        for j in range(n):
+            l.append([i,j])
+    return l
+
+def adjList(vertex):
+    i = vertex[0]
+    j = vertex[1]
+    l = []
+    if i-2>=0 and j-1>=0:
+        l.append([i-2,j-1])
+        direction.append("UL")
+    if i-2>=0 and j+1<n:
+        l.append([i-2,j+1])
+        direction.append("UR")
+    if j+2<n:
+        l.append([i,j+2])
+        direction.append("R")
+    if i+2<n and j+1<n:
+        l.append([i+2,j+1])
+        direction.append("LR")
+    if i+2<n and j-1>=0:
+        l.append([i+2,j-1])
+        direction.append("LL")
+    if j-2>=0:
+        l.append([i,j-2])
+        direction.append("L")
+    return l
+
+n = int(input())
+ri, ci, rf, cf = map(int, input().split(' '))
+direction = []
+BFS(n,[ri,ci],[rf,cf])
