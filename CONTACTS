@@ -1,0 +1,17 @@
+def contacts(queries):
+    # Write your code here
+    d={}
+    result=[]
+    for p,q in queries: 
+        if p=='add':
+            for i in range(1,len(q)+1):
+                if q[0:i] in d:
+                    d[q[0:i]]+=1
+                else:
+                    d[q[0:i]]=1
+        elif p=='find':
+            if q in d:
+                result.append(d[q])
+            else:
+                result.append(0)
+    return result
