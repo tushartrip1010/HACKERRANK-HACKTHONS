@@ -1,0 +1,21 @@
+def maxSubarray(arr):
+    # Write your code here
+    cur=maxt=arr[0]
+    for i in arr[1:len(arr)]:
+        cur=max(i,cur+i)
+        maxt=max(cur,maxt)
+    if maxt:
+        subsarray=maxt
+    else:
+        subsarray=-1
+
+    maxt=0
+    
+    for i in arr:
+        if i>=0:
+            maxt+=i
+    subseq=maxt
+    if maxt:
+        return(subsarray,subseq)
+    else:
+        return(subsarray,max(arr))
