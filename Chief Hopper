@@ -1,0 +1,9 @@
+def chiefHopper(arr):
+    n = len(arr)
+        
+    energy = 0      # Energy at end becomes 0
+
+    for i in range(n-1, -1, -1):
+        energy = math.ceil( (arr[i] + energy) / 2)
+                
+    return energy
