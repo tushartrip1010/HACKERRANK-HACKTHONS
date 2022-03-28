@@ -1,0 +1,12 @@
+def cookies(k, A):
+    
+    from heapq import heapify, heappop, heappush
+
+    count = 0
+    heapify(A)
+
+    while A[0] < k and len(A) > 1:
+        heappush( A, heappop(A) + 2 * heappop(A) )
+        count += 1
+    
+    return count if A[0] >= k else -1
