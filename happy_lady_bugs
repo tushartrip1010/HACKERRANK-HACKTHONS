@@ -1,0 +1,21 @@
+def happyLadybugs(b):
+    dic = {}
+    for i in b:
+        if i in dic:
+            dic[i]+=1
+        else:
+            dic[i]=1
+    for i,j in dic.items():
+        if j==1 and i !='_':
+            return 'NO'
+    if '_' in dic:
+        return 'YES'
+    else:
+        curr = b[0]
+        for i in b:
+            dic[i]-=1
+            if i!=curr:
+                if dic[curr]:
+                    return 'NO'
+                curr = i
+    return 'YES'
