@@ -1,5 +1,4 @@
 def cookies(k, A):
-    
     from heapq import heapify, heappop, heappush
 
     count = 0
