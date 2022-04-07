@@ -1,0 +1,25 @@
+def quickestWayUp(ladders, snakes):
+    # Write your code here
+    snakes=dict(snakes)
+    ladders=dict(ladders)
+    x=list(snakes.keys())
+    c=0
+    for i in range(93,100):
+        if i in x:
+            c+=1
+    if 100 not in ladders.values() and c==7:
+        return -1
+    snakes.update(ladders)
+    jump=snakes
+    final_pos=100
+    pos={1}
+    steps=0
+    while 100 not in pos:
+        steps+=1
+        old_pos=pos
+        pos=set()
+        for i in old_pos:
+            for dice in range(1,7):
+                n_dice=i+dice
+                pos.add(jump.get(n_dice,n_dice))
+    return steps
