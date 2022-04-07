@@ -1,0 +1,12 @@
+def gamingArray(arr):
+    # Write your code here
+    c=0
+    m=0
+    for i in arr:
+        if i>m:
+            m=i
+            c+=1
+    if c%2==0:
+        return 'ANDY'
+    else:
+        return 'BOB'
